@@ -1,0 +1,36 @@
+{
+    "version": "3",
+    "templates": [
+        {
+            "id": 1,
+            "type": 1,
+            "name": "nginx-proxy-manager",
+            "title": "Nginx Proxy Manager",
+            "image": "jc21/nginx-proxy-manager:latest",
+            "platform": "linux",
+            "restart_policy":"unless-stopped",
+            "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/proxy_mgr.png",
+            "description": "Nginx Proxy Manager enables you to easily forward to your websites running at home or otherwise, including free SSL",
+            "env": [
+                {
+                    "label": "DB_SQLITE_FILE",
+                    "name": "DB_SQLITE_FILE",
+                    "default": "/data/database.sqlite"
+                }
+            ],
+            "ports":[
+                "80:80/tcp",
+                "81:81/tcp",
+                "443:443/tcp"
+            ],
+            "volumes": [
+                {
+                    "container":"/data"
+                },
+                {
+                    "container": "/etc/letsencrypt"
+                }
+            ]
+        }
+    ]
+}
