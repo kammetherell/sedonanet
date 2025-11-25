@@ -64,6 +64,47 @@
                     "bind":"/var/lib/docker.sock"
                 }
             ]
+        },
+        ,
+        {
+            "id": 4,
+            "type": 1,
+            "name": "homeassistant",
+            "title": "Homeassistant",
+            "image": "linuxserver/homeassistant:latest",
+            "platform": "linux",
+            "restart_policy":"unless-stopped",
+            "description": "Open source home automation that puts local control and privacy first",
+            "network":"host",
+            "ports":[
+                "8123:8123/tcp"
+            ],
+            "volumes": [
+                {
+                    "container":"/config",
+                    "bind":"/homeassistant/config"
+                }
+            ],
+            "env": [
+                {
+                    "name": "PUID",
+                    "label": "PUID",
+                    "default": "1024",
+                    "description":"for GroupID"
+                },
+                {
+                    "name": "PGID",
+                    "label": "PGID",
+                    "default": "100",
+                    "description":"for UserID"
+                },
+                {
+                    "name": "TZ",
+                    "label": "TZ",
+                    "default": "Europe/London",
+                    "description":"Specify a timezone"
+                }
+            ]
         }
     ]
 }
