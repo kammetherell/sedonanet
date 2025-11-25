@@ -24,11 +24,44 @@
                 "443:443/tcp"
             ],
             "volumes": [
+                {"container":"/data"},
+                {"container": "/etc/letsencrypt"}
+            ]
+        },
+        {
+            "id": 2,
+            "type": 1,
+            "name": "vaultwarden",
+            "title": "Vaultwarden",
+            "image": "vaultwarden/server:latest",
+            "platform": "linux",
+            "restart_policy":"unless-stopped",
+            "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/bitwarden.png",
+            "description": "Locally hosted Password manager based on Bitwarden",
+            "ports":[
+                ":80/tcp"
+            ],
+            "volumes": [
+                {"container":"/config"}
+            ]
+        },
+        {
+            "id": 3,
+            "type": 1,
+            "name": "echobase",
+            "title": "Echobase",
+            "image": "ghcr.io/kammetherell/echobase:latest",
+            "platform": "linux",
+            "restart_policy":"unless-stopped",
+            "description": "Homelab controller including managing backups to S3",
+            "ports":[
+                ":5000/tcp"
+            ],
+            "volumes": [
+                {"container":"/app/db"},
                 {
-                    "container":"/data"
-                },
-                {
-                    "container": "/etc/letsencrypt"
+                    "container":"/var/lib/docker.sock",
+                    "bind":"/var/lib/docker.sock"
                 }
             ]
         }
