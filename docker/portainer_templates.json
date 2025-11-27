@@ -89,7 +89,7 @@
                 {
                     "name": "PUID",
                     "label": "PUID",
-                    "default": "1024",
+                    "default": "1000",
                     "description":"for GroupID"
                 },
                 {
