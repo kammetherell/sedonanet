@@ -1,0 +1,19 @@
+{
+    "type": 1,
+    "name": "echobase",
+    "title": "Echobase",
+    "image": "ghcr.io/kammetherell/echobase:latest",
+    "platform": "linux",
+    "restart_policy":"unless-stopped",
+    "description": "Homelab controller including managing backups to S3",
+    "ports":[
+        ":5000/tcp"
+    ],
+    "volumes": [
+        {"container":"/app/db"},
+        {
+            "container":"/var/lib/docker.sock",
+            "bind":"/var/lib/docker.sock"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "type": 1,
+    "name": "vaultwarden",
+    "title": "Vaultwarden",
+    "image": "vaultwarden/server:latest",
+    "platform": "linux",
+    "restart_policy":"unless-stopped",
+    "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/bitwarden.png",
+    "description": "Locally hosted Password manager based on Bitwarden",
+    "ports":[
+        ":80/tcp"
+    ],
+    "volumes": [
+        {"container":"/config"}
+    ]
+}
