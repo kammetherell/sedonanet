@@ -5,7 +5,7 @@
 - Nginx Proxy Manager
 - Adguard Home
 - Vaultwarden
-- S3 Backup Manager (My own creation)
+- SedonaNet Backup Manager (My own creation)
 
 ## Documentation
 
