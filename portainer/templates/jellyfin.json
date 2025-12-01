@@ -1,0 +1,54 @@
+{
+    "type": 1,
+    "name": "jellyfin",
+    "title": "Jellyfin",
+    "image": "linuxserver/jellyfin:latest",
+    "platform": "linux",
+    "restart_policy":"unless-stopped",
+    "description": "Free Software Media System",
+    "network":"host",
+    "ports":[
+        ":8096/tcp",
+        ":8920/tcp"        
+    ],
+    "volumes": [
+        {
+            "container":"config",
+            "bind":"/jellyfin/config"
+        },
+        {
+            "container":"/data/movies",
+            "bind":"/media/movies"
+        }
+    ],
+    "env": [
+        {
+            "name": "PUID",
+            "label": "PUID",
+            "default": "1000"
+        },
+        {
+            "name": "PGID",
+            "label": "PGID",
+            "default": "1000"
+        },
+        {
+            "name": "TZ",
+            "label": "TZ",
+            "default": "Europe/London",
+            "description":"Specify a timezone"
+        },
+        {
+            "label":"PASSWORD",
+            "name": "PASSWORD"
+        },
+        {
+            "label":"SUDO_PASSWORD",
+            "name": "SUDO_PASSWORD"
+        },
+        {
+            "label":"PROXY_DOMAIN",
+            "name": "PROXY_DOMAIN"
+        }
+    ]
+}

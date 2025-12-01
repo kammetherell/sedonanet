@@ -1,0 +1,27 @@
+{
+    "type": 1,
+    "name": "adguard",
+    "title": "Adguard",
+    "image": "adguard/adguardhome:latest",
+    "platform": "linux",
+    "restart_policy":"unless-stopped",
+    "description": "Adguard Home instance with ports required as plain DNS server and DHCP server if desired",
+    "network":"host",
+    "ports":[
+        ":80/tcp",
+        "3000:3000/tcp", 
+        "53:53/tcp", "53:53/udp",
+        "67:67/udp", 
+        "68:68/tcp", "68:68/udp"        
+    ],
+    "volumes": [
+        {
+            "container":"/opt/adguardhome/conf",
+            "bind":"/adguard/config"
+        },
+        {
+            "container":"/opt/adguardhome/work",
+            "bind":"/adguard/work"
+        }
+    ]
+}

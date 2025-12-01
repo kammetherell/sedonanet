@@ -1,0 +1,49 @@
+{
+    "type": 1,
+    "name": "code-server",
+    "title": "VS Code Server",
+    "image": "linuxserver/code-server:latest",
+    "platform": "linux",
+    "restart_policy":"unless-stopped",
+    "description": "VS Code running on a remote server",
+    "network":"host",
+    "ports":[
+        ":8443/tcp"        
+    ],
+    "volumes": [
+        {
+            "container":"config",
+            "bind":"/code-server/config"
+        }
+    ],
+    "env": [
+        {
+            "name": "PUID",
+            "label": "PUID",
+            "default": "1000"
+        },
+        {
+            "name": "GUID",
+            "label": "PUID",
+            "default": "1000"
+        },
+        {
+            "name": "TZ",
+            "label": "TZ",
+            "default": "Europe/London",
+            "description":"Specify a timezone"
+        },
+        {
+            "label":"PASSWORD",
+            "name": "PASSWORD"
+        },
+        {
+            "label":"SUDO_PASSWORD",
+            "name": "SUDO_PASSWORD"
+        },
+        {
+            "label":"PROXY_DOMAIN",
+            "name": "PROXY_DOMAIN"
+        }
+    ]
+}
